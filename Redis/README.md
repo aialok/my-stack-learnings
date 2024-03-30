@@ -90,3 +90,62 @@ eg :
 - LTRIM reduces a list to the specified range of elements.
 
 
+3. **Sets** : Redis Sets are an unordered collection of strings. Sets are used to store unique elements and are optimized for membership queries. Some of the basic commands for sets are:
+- SADD adds one or more members to a set.
+- SREM removes one or more members from a set.
+- SISMEMBER checks if a member is in a set.
+- SMEMBERS returns all members of a set.
+- SUNION returns the union of multiple sets.
+- SINTER returns the intersection of multiple sets.
+- SDIFF returns the difference between two sets.
+
+4. **Sorted Sets** : Redis Sorted Sets are similar to Redis Sets, but every member of a Sorted Set is associated with a score, which is used to sort the elements. Sorted Sets are used to store a list of non-repeating elements with a score. Some of the basic commands for sorted sets are:
+- ZADD adds one or more members to a sorted set, or updates the score of an existing member.
+- ZREM removes one or more members from a sorted set.
+- ZRANGE returns a range of members in a sorted set by index.
+- ZRANK returns the rank of a member in a sorted set.
+- ZSCORE returns the score of a member in a sorted set.
+- ZRANGEBYSCORE returns a range of members in a sorted set by score.
+
+5. **Hashes** : Redis Hashes are maps between string fields and string values, so they are great to represent objects. Some of the basic commands for hashes are:
+- HSET sets the field in the hash stored at key to value.
+- HGET returns the value associated with field in the hash stored at key.
+- HDEL deletes one or more fields from a hash.
+- HGETALL returns all fields and values of the hash stored at key.
+- HKEYS returns all field names in the hash stored at key.
+- HVALS returns all values in the hash stored at key.
+
+6. **Bitmaps** : Redis Bitmaps are a special data type that is used to represent a set of bits. Bitmaps are used to perform operations on bitmaps, such as setting, clearing, and counting bits. Some of the basic commands for bitmaps are:
+- SETBIT sets the bit at offset in the string value stored at key.
+- GETBIT returns the bit value at offset in the string value stored at key.
+- BITCOUNT counts the number of set bits in the string value stored at key.
+- BITOP performs bitwise operations between multiple keys and stores the result in the destination key.
+
+7. **HyperLogLogs** : Redis HyperLogLogs are a probabilistic data structure used to estimate the cardinality of a set. HyperLogLogs are used to perform approximate counting operations on sets. Some of the basic commands for HyperLogLogs are:
+- PFADD adds the specified elements to the HyperLogLog.
+- PFCOUNT returns the approximated cardinality of the HyperLogLog.
+- PFMERGE merges multiple HyperLogLogs into a single one.
+
+8. **Geospatial Indexes** : Redis Geospatial Indexes are used to store and query geospatial data. Geospatial Indexes are used to perform geospatial queries on sets of geospatial coordinates. Some of the basic commands for geospatial indexes are:
+- GEOADD adds geospatial coordinates to the specified key.
+- GEODIST returns the distance between two members in the geospatial index.
+- GEORADIUS returns members within a given radius from a point.
+- GEORADIUSBYMEMBER returns members within a given radius from a member.
+
+9. PUB/SUB : Redis Pub/Sub is a messaging system that allows clients to subscribe to channels and receive messages published to those channels. Some of the basic commands for Pub/Sub are:
+- SUBSCRIBE subscribes the client to the specified channels.
+- UNSUBSCRIBE unsubscribes the client from the specified channels.
+- PUBLISH publishes a message to the specified channel.
+- PSUBSCRIBE subscribes the client to channels matching the specified patterns.
+- PUNSUBSCRIBE unsubscribes the client from channels matching the specified patterns.
+
+10. Transactions : Redis Transactions are used to group multiple commands into a single atomic operation. Transactions are used to ensure that a group of commands are executed together or not at all. Some of the basic commands for transactions are:
+- MULTI marks the start of a transaction block.
+- EXEC executes all commands issued after MULTI.
+- DISCARD cancels a transaction.
+- WATCH watches the given keys to determine if they have been modified by other clients.
+- UNWATCH unsets all the watched keys.
+
+### Conclusion:
+
+Redis provides a rich set of data types and commands that enable developers to build high-performance and scalable applications. By leveraging the various data structures and persistence options provided by Redis, developers can implement a wide range of use cases, such as caching, real-time analytics, pub/sub messaging, rate limiting, and session storage. Redis's in-memory data store, replication, high availability, and partitioning capabilities make it a popular choice for building distributed systems that require fast data access and processing. With its versatile features and robust architecture, Redis is a powerful tool for building modern applications that require real-time data processing, communication, and analysis.
