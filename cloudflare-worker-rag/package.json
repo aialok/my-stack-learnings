@@ -1,0 +1,25 @@
+{
+  "name": "cloudflare-worker-rag",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.4.5",
+    "vitest": "1.5.0",
+    "wrangler": "^3.60.3"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "dependencies": {
+    "@cloudflare/ai": "^1.2.2",
+    "@pinecone-database/pinecone": "^0.1.6",
+    "@supabase/supabase-js": "^2.44.2",
+    "base64-js": "^1.5.1",
+    "hono": "^4.4.11",
+    "npm": "^10.8.1"
+  }
+}
