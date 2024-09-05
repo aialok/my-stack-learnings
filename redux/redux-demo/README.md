@@ -27,4 +27,9 @@ const reducer = (state = initialState, action) =>{
 ```
 - Javascript(APP) -> Action -> Reducer -> Store -> Javascript(APP)
 
+Note:
+- Reducer should be a pure function. It should not have any side effects like API calls and routing transitions.
+- Reducer should not mutate the state. It should always return a new state object.
+- Reducer should not call any non-pure functions like Date.now() or Math.random().
+- Reducer should not modify the action object. It should always return a new action object.
 
