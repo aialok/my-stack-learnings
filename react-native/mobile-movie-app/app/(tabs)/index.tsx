@@ -1,26 +1,74 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import MovieCard from "@/components/MovieCard";
+import { icons } from "@/constants/icons";
+import { images } from "@/constants/images";
+import { fetchMovies } from "@/services/api";
+import useFetch from "@/services/useFetch";
+import { useRouter } from "expo-router";
+import React from "react";
+import { ActivityIndicator, FlatList, Image, ScrollView, Text, View } from "react-native";
+import { SearchBar } from "./search";
+const Index = () => {
+  const router = useRouter();
 
-const index = () => {
+  const {
+    data: movies,
+    loading: moviesLoading,
+    error: moviesError,
+    refetch: moviesRefetch,
+    reset: moviesReset,
+  } = useFetch(() => fetchMovies({ query: "" }));
+
+  console.log(movies);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Welcome to the app</Text>
-    </View>
-  )
-}
+    <>
+      <View className="flex-1 bg-primary">
+        <Image source={images.bg} className="absolute w-full z-0" />
+        {/* <Text className='text-white text-2xl font-bold'>Home</Text> */}
 
-export default index
+        <ScrollView
+          className="flex-1 px-5"
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ minHeight: "100%", paddingBottom: 10 }}
+        >
+          <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto" />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#000",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 36,
-    fontWeight: "bold",
-    color: "#fff",
-  }
-});
+          {moviesLoading ? (
+            <ActivityIndicator size="large" color="#0000ff" />
+          ) : moviesError ? (
+            <Text className="text-white text-2xl font-bold">Error</Text>
+          ) : (
+            <View>
+              <SearchBar
+                onPress={() => router.push("/search")}
+                placeholder="Search Movies"
+              />
+              <>
+               <Text className="text-white text-lg font-bold mt-5 mb-3">Latest Movies</Text>
+               <FlatList
+                data={movies}
+                renderItem={({ item }) => (
+                  <MovieCard {...item} />
+                )}
+                keyExtractor={(item) => item.id.toString()}
+                numColumns={2}
+                columnWrapperStyle={{ 
+                  justifyContent: "flex-start",
+                  gap:20,
+                  paddingRight: 1,
+                  marginBottom: 5,
+                  flexWrap: "wrap",
+                 }}
+                contentContainerStyle={{  }}
+                scrollEnabled={false}
+              />
+              </>
+            </View>
+          )}
+        </ScrollView>
+      </View>
+    </>
+  );
+};
+
+export default Index;

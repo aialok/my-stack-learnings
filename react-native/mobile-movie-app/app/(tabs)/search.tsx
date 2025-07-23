@@ -1,21 +1,33 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { icons } from '@/constants/icons';
+import React from 'react';
+import { Image, Text, TextInput, View } from 'react-native';
 
-const Search = () => {
+interface SearchBarProps {
+  onPress: () => void;
+  placeholder: string;
+}
+
+export function SearchBar({ onPress, placeholder }: SearchBarProps) {
   return (
-    <View style={styles.container}>
-      <Text className='text-white flex justify-center items-center font-bold text-2xl'>Search</Text>
+    <View className='flex-row items-center bg-dark-200 rounded-full p-2'>
+        <Image source={icons.search} className='size-5' resizeMode='contain' tintColor='white' />
+        <TextInput
+            onPress={onPress}
+            onChangeText={() => {}}
+            placeholder={placeholder}
+            placeholderTextColor='#a8b5db'
+            className='flex-1 ml-2 text-white'
+        />
     </View>
   )
 }
 
-export default Search
+const search = () => {
+  return (
+    <View>
+      <Text>search</Text>
+    </View>
+  )
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
+export default search;
