@@ -14,12 +14,13 @@ export default index
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#000",
-    color: "#fff",
+    backgroundColor: "#000",
     justifyContent: "center",
     alignItems: "center",
   },
   text: {
     fontSize: 36,
+    fontWeight: "bold",
+    color: "#fff",
   }
 });
