@@ -18,7 +18,6 @@ const Index = () => {
     reset: moviesReset,
   } = useFetch(() => fetchMovies({ query: "" }));
 
-  console.log(movies);
 
   return (
     <>
@@ -27,7 +26,7 @@ const Index = () => {
         {/* <Text className='text-white text-2xl font-bold'>Home</Text> */}
 
         <ScrollView
-          className="flex-1 px-5"
+          className="flex-1 px-2"
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ minHeight: "100%", paddingBottom: 10 }}
         >
@@ -41,7 +40,8 @@ const Index = () => {
             <View>
               <SearchBar
                 onPress={() => router.push("/search")}
-                placeholder="Search Movies"
+                placeholder="Search for a movie"
+                onChangeText={() => {}}
               />
               <>
                <Text className="text-white text-lg font-bold mt-5 mb-3">Latest Movies</Text>
@@ -51,7 +51,7 @@ const Index = () => {
                   <MovieCard {...item} />
                 )}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={2}
+                numColumns={3}
                 columnWrapperStyle={{ 
                   justifyContent: "flex-start",
                   gap:20,
